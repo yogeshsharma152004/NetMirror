@@ -40,18 +40,23 @@ const Header = () => {
     }, []);
 
   return (
-    <div className='absolute w-full px-8 py-3  z-10 flex items-center justify-between  '>
-        <img className='w-44' src={NetmirrorImg} alt="logo" />
+    <div className="absolute top-0 w-full px-8 py-2  z-10 flex items-center justify-between  ">
+      <img className="w-44" src={NetmirrorImg} alt="logo" />
 
-        {user &&<div className='flex items-center gap-6'>
-           <img className='w-10' src={userIcon} alt="userIcon" />
+      {user && (
+        <div className="flex items-center gap-6">
+          <img className="w-10" src={userIcon} alt="userIcon" />
 
-           <button onClick={handleSignOut} className='bg-red-500 px-4 py-2 rounded-lg text-white font-semibold text-lg'>Sign Out</button>
-        </div>}
+          <button
+            onClick={handleSignOut}
+            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold text-lg cursor-pointer"
+          >
+            Sign Out
+          </button>
+        </div>
+      )}
     </div>
-
-  
-  )
+  );
 }
 
 export default Header

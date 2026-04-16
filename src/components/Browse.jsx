@@ -12,11 +12,11 @@ const Browse = () => {
 
   return (
     <div >
-      <Header/>
-       <MainContainer/>
-       <SecondaryContainer/>
+      <Header />
+      <MainContainer />
+      <SecondaryContainer />
     </div>
-  )
+  );
 }
 
 export default Browse

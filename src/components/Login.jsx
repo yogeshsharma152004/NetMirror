@@ -122,7 +122,7 @@ const Login = () => {
         </p>
 
         <button
-          className="p-2 mt-8 w-full font-semibold bg-red-600 rounded-sm"
+          className="p-2 mt-8 w-full font-semibold bg-red-600 rounded-sm cursor-pointer"
           onClick={handleButtonClick}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
