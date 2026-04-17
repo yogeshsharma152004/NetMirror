@@ -81,11 +81,11 @@ const Login = () => {
       <Header />
 
       <div className="absolute  brightness-40 ">
-        <img   src={BackgroundImg} alt="Image" />
+        <img src={BackgroundImg} alt="Image" />
       </div>
 
       <form
-        className="w-3/12 absolute bg-black/80 text-white p-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl"
+        className="w-[350px] absolute bg-black/80 text-white p-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-xl backdrop-blur-md shadow-2xl"
         onSubmit={(e) => {
           e.preventDefault();
         }}

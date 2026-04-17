@@ -1,55 +1,62 @@
-import React, { useEffect } from 'react'
-import NetmirrorImg from '../assets/NetMirror.png'
-import userIcon from "../assets/user-logo.jpg"
-import { onAuthStateChanged, signOut } from 'firebase/auth'
-import { auth } from '../utils/firebase'
-import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
-import { addUser, removeUser } from '../redux/slices/userSlice'
+import React, { useEffect } from "react";
+import NetmirrorImg from "../assets/NetMirror.png";
+import userIcon from "../assets/user-logo.jpg";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { addUser, removeUser } from "../redux/slices/userSlice";
+import { FaSearch } from "react-icons/fa";
+import { toggleGptSearchView } from "../redux/slices/gptSlice";
 const Header = () => {
-  
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const user = useSelector((store) => store.user )
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((store) => store.user);
   const handleSignOut = () => {
     signOut(auth)
-      .then(() => {
-       
-      })
+      .then(() => {})
       .catch((error) => {
-        navigate("/error")
+        navigate("/error");
       });
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName }));
+
+        navigate("/browse");
+      } else {
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleGptSearch = () =>{
+    dispatch(toggleGptSearchView())
   }
 
-    useEffect(() => {
-     const unsubscribe =  onAuthStateChanged(auth, (user) => {
-        if (user) {
-          const { uid, email, displayName } = user;
-          dispatch(
-            addUser({ uid: uid, email: email, displayName: displayName }),
-          );
-
-          navigate("/browse");
-        } else {
-          dispatch(removeUser());
-          navigate("/");
-        }
-      });
-
-      return () => unsubscribe()
-    }, []);
-
   return (
-    <div className="absolute top-0 w-full px-8 py-2  z-10 flex items-center justify-between  ">
+    <div className="fixed top-0 w-full px-8 py-3 z-20 flex items-center justify-between bg-gradient-to-b from-black/80 to-transparent ">
       <img className="w-44" src={NetmirrorImg} alt="logo" />
 
       {user && (
-        <div className="flex items-center gap-6">
-          <img className="w-10" src={userIcon} alt="userIcon" />
+        <div className="flex tems-center gap-6">
+          <button
+            className="bg-transparent border-2 border-[#ffffff69]  px-3 py-2 rounded-lg text-white font-bold text-lg cursor-pointer"
+            onClick={handleGptSearch}
+          >
+            GPT Search
+          </button>
+          <img className="w-12" src={userIcon} alt="userIcon" />
 
           <button
             onClick={handleSignOut}
-            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold text-lg cursor-pointer"
+            className="bg-red-500 px-4 py-2 rounded-lg text-white font-semibold text-lg cursor-pointer "
           >
             Sign Out
           </button>
@@ -57,6 +64,6 @@ const Header = () => {
       )}
     </div>
   );
-}
+};
 
-export default Header
+export default Header;

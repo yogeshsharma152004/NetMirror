@@ -7,9 +7,10 @@ const VideoBackground = ({movieId}) => {
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
 
    useMovieTrailer(movieId)
+   if (!trailerVideo) return null;
 
  return (
-   <div className="fixed top-0 left-0 w-full h-full -z-10 overflow-x-hidden">
+   <div className="w-full h-screen overflow-hidden relative ">
      <iframe
        className="absolute top-1/2 left-1/2 w-[130vw] h-[135vh] -translate-x-1/2 -translate-y-1/2"
        src={

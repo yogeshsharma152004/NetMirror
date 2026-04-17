@@ -18,23 +18,23 @@ const MainContainer = () => {
   }, [movies]);
 
  
-  useEffect(() => {
-    if (trailerVideo === null && movies) {
-      const randomIndex = Math.floor(Math.random() * movies.length);
-      setMainMovie(movies[randomIndex]);
-    }
-  }, [trailerVideo]);
+  
 
   if (!mainMovie) return null;
 
   const { original_title, overview, id } = mainMovie;
 
-  return (
-    <div>
-      <VideoBackground movieId={id} />
-      <VideoTitle title={original_title} overview={overview} />
-    </div>
-  );
+ 
+    return (
+      <div className="w-full h-screen relative">
+        <VideoBackground movieId={id} />
+
+        {trailerVideo && (
+          <VideoTitle title={original_title} overview={overview} />
+        )}
+      </div>
+    );
+
 };
 
 export default MainContainer;
