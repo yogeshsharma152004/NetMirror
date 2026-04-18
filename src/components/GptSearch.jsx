@@ -1,23 +1,41 @@
-import React from 'react'
-import GptSearchBar from './GptSearchBar'
-import GptMovieSuggestion from './GptMovieSuggestion'
-import BackgroundImg from "../assets/background.jpg"
+import GptSearchBar from "./GptSearchBar";
+import GptMovieSuggestion from "./GptMovieSuggestion";
+
 const GptSearch = () => {
   return (
-    <div className=" relative w-full min-h-screen text-white">
-      <img
-        src={BackgroundImg}
-        alt="bg"
-        className="absolute w-full h-full object-cover "
+    <div
+      className="relative w-full min-h-screen text-white pt-4"
+      style={{ background: "#07050f" }}
+    >
+      {/* Orbs */}
+      <div
+        className="orb"
+        style={{
+          width: "400px",
+          height: "400px",
+          background:
+            "radial-gradient(circle,rgba(120,60,255,0.2),transparent 70%)",
+          top: "0px",
+          left: "20%",
+        }}
       />
-
-      <div className="absolute w-full h-full bg-black/70"></div>
+      <div
+        className="orb"
+        style={{
+          width: "300px",
+          height: "300px",
+          background:
+            "radial-gradient(circle,rgba(255,200,50,0.1),transparent 70%)",
+          top: "100px",
+          right: "10%",
+        }}
+      />
       <div className="relative z-10">
         <GptSearchBar />
         <GptMovieSuggestion />
       </div>
     </div>
   );
-}
+};
 
-export default GptSearch
+export default GptSearch;
