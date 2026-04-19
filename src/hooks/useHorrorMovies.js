@@ -10,7 +10,7 @@ const useHorrorMovies = () => {
   useEffect(() => {
     const getHorrorMovies = async () => {
       const data = await fetch(
-        "https://api.themoviedb.org/3/discover/movie?with_genres=27&language=en-US&page=1",
+        "https://api.themoviedb.org/3/discover/movie?with_genres=27&language=en-IN&page=1&region=IN",
         API_OPTIONS,
       );
       const json = await data.json();

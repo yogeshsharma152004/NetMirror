@@ -20,7 +20,7 @@ const GptSearchBar = () => {
     const data = await fetch(
       "https://api.themoviedb.org/3/search/movie?query=" +
         movie +
-        "&include_adult=false&language=en-US&page=1",
+        "&include_adult=false&language=en-IN&page=1&region=IN",
       API_OPTIONS,
     );
     const json = await data.json();
@@ -59,17 +59,17 @@ const GptSearchBar = () => {
   };
 
   return (
-    <div className="flex justify-center pt-36 px-8">
+    <div className="flex justify-center pt-24 sm:pt-36 px-4 sm:px-8">
       <div className="w-full max-w-2xl relative">
         <div
-          className="absolute top-0 left-8 right-8 h-px"
+          className="absolute top-0 left-4 sm:left-8 right-4 sm:right-8 h-px"
           style={{
             background:
               "linear-gradient(to right,transparent,rgba(168,85,247,0.5),transparent)",
           }}
         />
         <div
-          className="flex items-center gap-3 px-6 py-4 rounded-2xl"
+          className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl"
           style={{
             background: "rgba(168,85,247,0.06)",
             backdropFilter: "blur(20px)",
@@ -81,19 +81,17 @@ const GptSearchBar = () => {
           </span>
           <input
             ref={searchText}
-            className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-sm"
+            className="flex-1 bg-transparent text-white placeholder-gray-500 outline-none text-xs sm:text-sm min-w-0"
             type="text"
             placeholder={language[languageKey].gptPlaceHolder}
           />
           <button
             onClick={handleGptSearchs}
             disabled={loading}
-            className="px-6 py-2 rounded-xl text-xs font-black tracking-wider text-white cursor-pointer disabled:opacity-50"
-            style={{
-              background: "linear-gradient(135deg,#7c3aed,#fbbf24)",
-            }}
+            className="flex-shrink-0 px-4 sm:px-6 py-2 rounded-xl text-xs font-black tracking-wider text-white cursor-pointer disabled:opacity-50"
+            style={{ background: "linear-gradient(135deg,#7c3aed,#fbbf24)" }}
           >
-            {loading ? "Searching..." : language[languageKey].search}
+            {loading ? "..." : language[languageKey].search}
           </button>
         </div>
       </div>

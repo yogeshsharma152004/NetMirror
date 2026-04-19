@@ -1,8 +1,9 @@
-import Header from "./Header";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   signInWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
@@ -14,6 +15,7 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -49,17 +51,24 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) navigate("/browse");
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div
-      className="relative w-full min-h-screen flex items-center justify-center"
+      className="relative w-full min-h-screen flex items-center justify-center px-4"
       style={{ background: "#07050f" }}
     >
       {/* Orbs */}
       <div
         className="orb"
         style={{
-          width: "500px",
-          height: "500px",
+          width: "clamp(250px,40vw,500px)",
+          height: "clamp(250px,40vw,500px)",
           background:
             "radial-gradient(circle,rgba(120,60,255,0.2),transparent 70%)",
           top: "-100px",
@@ -69,8 +78,8 @@ const Login = () => {
       <div
         className="orb"
         style={{
-          width: "400px",
-          height: "400px",
+          width: "clamp(200px,35vw,400px)",
+          height: "clamp(200px,35vw,400px)",
           background:
             "radial-gradient(circle,rgba(255,200,50,0.1),transparent 70%)",
           bottom: "-80px",
@@ -78,18 +87,49 @@ const Login = () => {
         }}
       />
 
-      <Header />
+      {/* Mini Header */}
+      <div
+        className="fixed top-0 w-full z-50 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between"
+        style={{
+          background: "rgba(7,5,15,0.55)",
+          backdropFilter: "blur(16px)",
+          borderBottom: "1px solid rgba(168,85,247,0.15)",
+        }}
+      >
+        <div
+          className="flex items-center gap-2 sm:gap-3 cursor-pointer"
+          onClick={() => navigate("/")}
+        >
+          <div
+            className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg flex items-center justify-center text-white text-xs sm:text-sm font-black"
+            style={{ background: "linear-gradient(135deg,#7c3aed,#fbbf24)" }}
+          >
+            ▶
+          </div>
+          <div className="text-lg sm:text-xl font-black tracking-widest">
+            <span className="text-white">NET</span>
+            <span
+              style={{
+                background: "linear-gradient(135deg,#a855f7,#fbbf24)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              MIRROR
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Form */}
       <div
-        className="relative z-10 w-96 p-10 rounded-2xl text-white"
+        className="relative z-10 w-full max-w-sm sm:max-w-md p-6 sm:p-10 rounded-2xl text-white mt-16"
         style={{
           background: "rgba(255,255,255,0.04)",
           backdropFilter: "blur(24px)",
           border: "1px solid rgba(255,255,255,0.08)",
         }}
       >
-        {/* Top shimmer */}
         <div
           className="absolute top-0 left-8 right-8 h-px"
           style={{
@@ -98,10 +138,13 @@ const Login = () => {
           }}
         />
 
-        <h1 className="text-3xl font-black mb-2">
+        <h1 className="text-2xl sm:text-3xl font-black mb-2">
           {isSignInForm ? "Welcome back" : "Join us"}
         </h1>
-        <p className="text-sm mb-8" style={{ color: "rgba(255,255,255,0.4)" }}>
+        <p
+          className="text-xs sm:text-sm mb-6 sm:mb-8"
+          style={{ color: "rgba(255,255,255,0.4)" }}
+        >
           {isSignInForm
             ? "Sign in to continue watching"
             : "Create your account"}
@@ -112,7 +155,7 @@ const Login = () => {
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="w-full mb-4 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none"
+            className="w-full mb-3 sm:mb-4 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none"
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.08)",
@@ -124,7 +167,7 @@ const Login = () => {
           ref={email}
           type="text"
           placeholder="Email Address"
-          className="w-full mb-4 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none"
+          className="w-full mb-3 sm:mb-4 px-4 py-3 rounded-xl text-sm text-white placeholder-gray-500 outline-none"
           style={{
             background: "rgba(255,255,255,0.05)",
             border: "1px solid rgba(255,255,255,0.08)",
@@ -144,7 +187,7 @@ const Login = () => {
 
         {errorMessage && (
           <p
-            className="mt-4 text-sm font-semibold"
+            className="mt-3 sm:mt-4 text-xs sm:text-sm font-semibold"
             style={{ color: "#f87171" }}
           >
             {errorMessage}
@@ -153,23 +196,33 @@ const Login = () => {
 
         <button
           onClick={handleButtonClick}
-          className="w-full mt-6 py-3 rounded-xl font-black text-sm text-white cursor-pointer"
+          className="w-full mt-5 sm:mt-6 py-3 rounded-xl font-black text-sm text-white cursor-pointer"
           style={{ background: "linear-gradient(135deg,#7c3aed,#9f67ff)" }}
         >
           {isSignInForm ? "Sign In" : "Sign Up"}
         </button>
 
         <p
-          className="mt-6 text-sm text-center"
+          className="mt-5 sm:mt-6 text-xs sm:text-sm text-center"
           style={{ color: "rgba(255,255,255,0.4)" }}
         >
-          {isSignInForm ? "New here?" : "Already registered?"}{" "}
+          {isSignInForm ? "New here? " : "Already registered? "}
           <span
             onClick={() => setIsSignInForm(!isSignInForm)}
             className="font-bold cursor-pointer"
             style={{ color: "#c084fc" }}
           >
             {isSignInForm ? "Create account" : "Sign in"}
+          </span>
+        </p>
+
+        <p className="mt-3 text-sm text-center">
+          <span
+            onClick={() => navigate("/")}
+            className="cursor-pointer text-xs"
+            style={{ color: "rgba(255,255,255,0.25)" }}
+          >
+            ← Back to Home
           </span>
         </p>
       </div>

@@ -8,7 +8,7 @@ const SecondaryContainer = () => {
 
   return (
     <div
-      className="relative z-10 pb-16"
+      className="relative z-10 pb-16 "
       style={{
         background: "linear-gradient(to bottom,transparent,#07050f 120px)",
         marginTop: "-80px",

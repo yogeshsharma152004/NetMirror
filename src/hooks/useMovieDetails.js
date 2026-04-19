@@ -17,15 +17,15 @@ const useMovieDetails = (movieId) => {
         // Movie details + cast + similar — parallel fetch ✅
         const [detailRes, creditsRes, similarRes] = await Promise.all([
           fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+            `https://api.themoviedb.org/3/movie/${movieId}?language=en-IN`,
             API_OPTIONS,
           ),
           fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`,
+            `https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-IN`,
             API_OPTIONS,
           ),
           fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US`,
+            `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-IN&page=1&region=IN`,
             API_OPTIONS,
           ),
         ]);

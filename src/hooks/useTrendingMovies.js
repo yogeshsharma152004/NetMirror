@@ -8,7 +8,7 @@ const useTrendingMovies = () => {
 
   const getTrendingMovies = async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/trending/movie/day?region=IN",
+      "https://api.themoviedb.org/3/trending/movie/day?region=IN&language=en-IN",
       API_OPTIONS,
     );
 

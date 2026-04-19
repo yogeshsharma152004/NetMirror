@@ -1,45 +1,50 @@
+
+
 import { API_OPTIONS } from "../utils/constansts";
 import { addTrailerVideo } from "../redux/slices/moviesSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
+  const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
 
   useEffect(() => {
     if (!movieId) return;
-
-    let isCurrent = true; 
+    if (trailerVideo) return; // ✅ Already hai toh skip
 
     const getMovieVideos = async () => {
-      dispatch(addTrailerVideo(null)); 
-
       const data = await fetch(
         "https://api.themoviedb.org/3/movie/" +
           movieId +
           "/videos?language=en-US",
         API_OPTIONS,
       );
-
       const json = await data.json();
 
-      if (!isCurrent) return; 
-
-      const filterData = json.results.filter(
-        (video) => video.type === "Trailer" && video.site === "YouTube",
+      // ✅ Priority: Trailer > Teaser > Any YouTube video
+      const trailers = json.results.filter(
+        (v) => v.type === "Trailer" && v.site === "YouTube",
       );
+      const teasers = json.results.filter(
+        (v) => v.type === "Teaser" && v.site === "YouTube",
+      );
+      const anyVideo = json.results.filter((v) => v.site === "YouTube");
 
-      const trailer = filterData.length ? filterData[0] : null;
+      const trailer = trailers.length
+        ? trailers[0]
+        : teasers.length
+          ? teasers[0]
+          : anyVideo.length
+            ? anyVideo[0]
+            : null;
 
       dispatch(addTrailerVideo(trailer));
     };
 
     getMovieVideos();
-
-    return () => {
-      isCurrent = false;
-    };
-  }, [movieId, dispatch]);
+  }, [movieId]);
 };
 
-export default useMovieTrailer
+export default useMovieTrailer;
+

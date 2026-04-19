@@ -66,3 +66,16 @@ body {
     border-color: rgba(168, 85, 247, 0.4) !important;
     box-shadow: 0 8px 28px rgba(120, 60, 255, 0.3);
 }
+
+* {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+/* ✅ Sirf inputs mein select allow karo */
+input,
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}

@@ -8,7 +8,7 @@ const usePopularMovies = () => {
 
   const getPopularMovies = async () => {
     const data = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1",
+      "https://api.themoviedb.org/3/movie/popular?language=en-IN&page=1&region=IN",
       API_OPTIONS,
     );
 

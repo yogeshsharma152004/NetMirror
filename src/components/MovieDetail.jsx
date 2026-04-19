@@ -29,7 +29,7 @@ const MovieDetail = () => {
             border: "3px solid rgba(168,85,247,0.2)",
             borderTop: "3px solid #a855f7",
           }}
-        ></div>
+        />
       </div>
     );
 
@@ -47,11 +47,8 @@ const MovieDetail = () => {
   } = movie;
 
   const handleWatchlist = () => {
-    if (isInWatchlist(movie.id)) {
-      removeMovie(movie.id);
-    } else {
-      addMovie(movie);
-    }
+    if (isInWatchlist(movie.id)) removeMovie(movie.id);
+    else addMovie(movie);
   };
 
   return (
@@ -59,7 +56,7 @@ const MovieDetail = () => {
       className="min-h-screen text-white relative"
       style={{ background: "#07050f" }}
     >
-      {/* Background Orbs */}
+      {/* Orbs */}
       <div
         className="orb"
         style={{
@@ -84,13 +81,12 @@ const MovieDetail = () => {
       />
 
       {/* Hero Banner */}
-      <div className="relative w-full h-[55vh]">
+      <div className="relative w-full h-[40vh] sm:h-[55vh]">
         <img
           className="w-full h-full object-cover"
           src={`https://image.tmdb.org/t/p/original${backdrop_path}`}
           alt={title}
         />
-        {/* Overlays */}
         <div
           className="absolute inset-0"
           style={{
@@ -106,10 +102,9 @@ const MovieDetail = () => {
           }}
         />
 
-        {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="absolute top-6 left-6 z-10 px-4 py-2 rounded-xl text-sm font-semibold cursor-pointer"
+          className="absolute top-4 sm:top-6 left-4 sm:left-6 z-10 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-pointer"
           style={{
             background: "rgba(255,255,255,0.08)",
             backdropFilter: "blur(12px)",
@@ -122,12 +117,12 @@ const MovieDetail = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 px-10 -mt-40">
-        <div className="flex gap-8 items-end">
+      <div className="relative z-10 px-4 sm:px-10 -mt-28 sm:-mt-40">
+        <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 items-start sm:items-end">
           {/* Poster */}
-          <div className="flex-shrink-0 hidden md:block">
+          <div className="hidden sm:block flex-shrink-0">
             <img
-              className="w-44 rounded-2xl object-cover"
+              className="w-32 sm:w-44 rounded-2xl object-cover"
               style={{
                 border: "1px solid rgba(168,85,247,0.3)",
                 boxShadow: "0 0 40px rgba(120,60,255,0.3)",
@@ -138,10 +133,9 @@ const MovieDetail = () => {
           </div>
 
           {/* Info */}
-          <div className="flex-1 pb-4">
-            {/* Badge */}
+          <div className="flex-1 pb-4 w-full">
             <div
-              className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-lg text-xs font-black tracking-widest"
+              className="inline-flex items-center gap-2 mb-2 sm:mb-3 px-2.5 sm:px-3 py-1 rounded-lg text-xs font-black tracking-widest"
               style={{
                 background: "rgba(251,191,36,0.1)",
                 border: "1px solid rgba(251,191,36,0.3)",
@@ -151,9 +145,8 @@ const MovieDetail = () => {
               ✦ MOVIE
             </div>
 
-            {/* Title */}
             <h1
-              className="text-5xl font-black mb-3 leading-tight tracking-tight"
+              className="text-2xl sm:text-4xl lg:text-5xl font-black mb-2 sm:mb-3 leading-tight tracking-tight"
               style={{
                 background: "linear-gradient(135deg,#fff 40%,#c084fc)",
                 WebkitBackgroundClip: "text",
@@ -163,33 +156,34 @@ const MovieDetail = () => {
               {title}
             </h1>
 
-            {/* Meta */}
-            <div className="flex items-center gap-3 mb-4 flex-wrap">
-              <span className="font-bold text-sm" style={{ color: "#fbbf24" }}>
+            <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 flex-wrap">
+              <span
+                className="font-bold text-xs sm:text-sm"
+                style={{ color: "#fbbf24" }}
+              >
                 ★ {vote_average?.toFixed(1)}
               </span>
               <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
               <span
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 style={{ color: "rgba(255,255,255,0.5)" }}
               >
                 {release_date?.split("-")[0]}
               </span>
               <span style={{ color: "rgba(255,255,255,0.3)" }}>·</span>
               <span
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 style={{ color: "rgba(255,255,255,0.5)" }}
               >
                 {Math.floor(runtime / 60)}h {runtime % 60}m
               </span>
             </div>
 
-            {/* Genres */}
-            <div className="flex gap-2 mb-5 flex-wrap">
+            <div className="flex gap-1.5 sm:gap-2 mb-4 sm:mb-5 flex-wrap">
               {genres?.map((g) => (
                 <span
                   key={g.id}
-                  className="px-3 py-1 rounded-lg text-xs font-bold tracking-wide"
+                  className="px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg text-xs font-bold tracking-wide"
                   style={{
                     background: "rgba(168,85,247,0.1)",
                     border: "1px solid rgba(168,85,247,0.2)",
@@ -201,10 +195,9 @@ const MovieDetail = () => {
               ))}
             </div>
 
-            {/* Buttons */}
-            <div className="flex gap-3 mb-5">
+            <div className="flex gap-2 sm:gap-3 mb-4 sm:mb-5">
               <button
-                className="px-8 py-3 rounded-xl font-black text-sm text-white cursor-pointer"
+                className="px-5 sm:px-8 py-2.5 sm:py-3 rounded-xl font-black text-xs sm:text-sm text-white cursor-pointer"
                 style={{
                   background: "linear-gradient(135deg,#7c3aed,#9f67ff)",
                 }}
@@ -213,7 +206,7 @@ const MovieDetail = () => {
               </button>
               <button
                 onClick={handleWatchlist}
-                className="px-6 py-3 rounded-xl font-bold text-sm cursor-pointer transition-all"
+                className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-xs sm:text-sm cursor-pointer transition-all"
                 style={
                   isInWatchlist(movie?.id)
                     ? {
@@ -232,9 +225,8 @@ const MovieDetail = () => {
               </button>
             </div>
 
-            {/* Overview */}
             <p
-              className="text-sm leading-relaxed max-w-2xl"
+              className="text-xs sm:text-sm leading-relaxed max-w-2xl"
               style={{ color: "rgba(255,255,255,0.55)" }}
             >
               {overview}
@@ -242,9 +234,8 @@ const MovieDetail = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div
-          className="my-10 h-px"
+          className="my-6 sm:my-10 h-px"
           style={{
             background:
               "linear-gradient(to right,rgba(168,85,247,0.3),transparent)",
@@ -253,9 +244,11 @@ const MovieDetail = () => {
 
         {/* Cast */}
         {cast.length > 0 && (
-          <div className="mb-10">
-            <div className="flex items-center gap-3 mb-5">
-              <h2 className="text-base font-black tracking-wider">Cast</h2>
+          <div className="mb-8 sm:mb-10">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+              <h2 className="text-sm sm:text-base font-black tracking-wider">
+                Cast
+              </h2>
               <div
                 className="flex-1 h-px"
                 style={{
@@ -264,11 +257,14 @@ const MovieDetail = () => {
                 }}
               />
             </div>
-            <div className="flex gap-4 overflow-x-scroll no-scrollbar pb-2">
+            <div className="flex gap-3 sm:gap-4 overflow-x-scroll no-scrollbar pb-2">
               {cast.map((person) => (
-                <div key={person.id} className="flex-shrink-0 text-center w-20">
+                <div
+                  key={person.id}
+                  className="flex-shrink-0 text-center w-14 sm:w-20"
+                >
                   <img
-                    className="w-16 h-16 rounded-full object-cover mx-auto mb-2"
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover mx-auto mb-1.5 sm:mb-2"
                     style={{ border: "2px solid rgba(168,85,247,0.3)" }}
                     src={
                       person.profile_path
@@ -291,9 +287,9 @@ const MovieDetail = () => {
 
         {/* Similar Movies */}
         {similar.length > 0 && (
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-5">
-              <h2 className="text-base font-black tracking-wider">
+          <div className="mb-12 sm:mb-16">
+            <div className="flex items-center gap-3 mb-4 sm:mb-5">
+              <h2 className="text-sm sm:text-base font-black tracking-wider">
                 Similar Movies
               </h2>
               <div
@@ -304,7 +300,7 @@ const MovieDetail = () => {
                 }}
               />
             </div>
-            <div className="flex gap-3 overflow-x-scroll no-scrollbar pb-2">
+            <div className="flex gap-2 sm:gap-3 overflow-x-scroll no-scrollbar py-3 sm:py-4">
               {similar.map((m) => (
                 <MovieCard
                   key={m.id}
