@@ -64,11 +64,11 @@ const MainContainer = () => {
 
   if (!mainMovie) return <HeroSkeleton />;
 
-  const { original_title, overview, id } = mainMovie;
+  const { original_title, overview, id  , backdrop_path} = mainMovie;
 
   return (
-    <div className="w-full h-screen relative ">
-      <VideoBackground movieId={id}  />
+    <div className="w-full h-[60vh] md:h-screen relative ">
+      <VideoBackground movieId={id} backdropPath={backdrop_path} />
       {trailerVideo && (
         <VideoTitle title={original_title} overview={overview} />
       )}

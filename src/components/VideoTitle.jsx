@@ -6,7 +6,7 @@ const VideoTitle = ({ title, overview }) => {
       className="absolute inset-0 flex flex-col justify-end pb-28 sm:pb-24 lg:pb-32 px-5 sm:px-8 lg:px-12 text-white "
       style={{
         background:
-          "linear-gradient(to right,rgba(7,5,15,0.92) 40%,transparent 80%)",
+          "linear-gradient(to top,rgba(7,5,15,0.85) 0%, rgba(7,5,15,0.4) 50%, transparent 100%)",
       }}
     >
       {/* Badge */}

@@ -1,11 +1,46 @@
-import { useSelector } from 'react-redux';
-import useMovieTrailer from '../hooks/useMovieTrailer';
+import { useSelector } from "react-redux";
+import useMovieTrailer from "../hooks/useMovieTrailer";
+import { useState, useEffect } from "react";
 
-const VideoBackground = ({ movieId }) => {
+const VideoBackground = ({ movieId, backdropPath }) => {
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   useMovieTrailer(movieId);
 
-  // ✅ Trailer nahi hai toh kuch nahi dikhao
+  // ✅ Resize pe update karo
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (!trailerVideo && !backdropPath) return null;
+
+  // ✅ Mobile pe hamesha image
+  if (isMobile) {
+    return (
+      <div className="w-full h-full absolute inset-0 ">
+        <img
+          className="w-full h-full object-cover object-center"
+          src={`https://image.tmdb.org/t/p/original${backdropPath}`}
+          alt="backdrop"
+        />
+        {/* Overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top,#07050f 0%,rgba(7,5,15,0.3) 60%,transparent 100%)",
+          }}
+        />
+      </div>
+    );
+  }
+
+  // ✅ Desktop pe video
   if (!trailerVideo) return null;
 
   return (

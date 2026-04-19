@@ -52,8 +52,8 @@ const Header = () => {
     <div
       className="fixed top-0 w-full z-50 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between"
       style={{
-        background: "rgba(7,5,15,0.55)",
-        backdropFilter: "blur(16px)",
+        background: "rgba(7,5,15,0.35)",
+        backdropFilter: "blur(5px)",
         borderBottom: "1px solid rgba(168,85,247,0.15)",
       }}
     >
