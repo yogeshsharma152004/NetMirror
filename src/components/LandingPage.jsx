@@ -33,7 +33,7 @@ const LandingPage = () => {
     },
     {
       q: "How does AI Search work?",
-      a: "Just type what kind of movie you want — like 'scary movies for night' or 'feel good romantic films' — and our AI will suggest the perfect matches.",
+      a: "Just type what kind of movie you want  like 'scary movies for night' or 'feel good romantic films'  and our AI will suggest the perfect matches.",
     },
     {
       q: "Is NetMirror free to use?",
@@ -50,7 +50,8 @@ const LandingPage = () => {
       className="min-h-screen text-white relative"
       style={{ background: "#07050f" }}
     >
-      {/* Background Orbs */}
+      {/* background orbs or filter */}
+
       <div
         className="orb"
         style={{
@@ -85,7 +86,7 @@ const LandingPage = () => {
         }}
       />
 
-      {/* Header */}
+       // Header 
       <div
         className="fixed top-0 w-full z-50 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between"
         style={{
@@ -129,7 +130,8 @@ const LandingPage = () => {
         </button>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section  */}
+
       <div
         className="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-4 sm:px-8  pt-20 "
         style={{
@@ -193,7 +195,8 @@ const LandingPage = () => {
         </div>
       </div>
 
-      {/* Trending Section */}
+      {/* Trending Section  */}
+
       <div className="px-4 sm:px-8 py-12 sm:py-16 relative z-10">
         <div className="flex items-center gap-3 mb-6 sm:mb-8 flex-wrap">
           <div
@@ -260,6 +263,7 @@ const LandingPage = () => {
       </div>
 
       {/* Features Section */}
+
       <div className="px-4 sm:px-8 py-12 sm:py-16 relative z-10">
         <div className="text-center mb-8 sm:mb-12">
           <div
@@ -325,6 +329,7 @@ const LandingPage = () => {
       </div>
 
       {/* FAQ Section */}
+
       <div className="px-4 sm:px-8 py-12 sm:py-16 relative z-10 max-w-4xl mx-auto">
         <div className="text-center mb-8 sm:mb-12">
           <h2
@@ -368,6 +373,7 @@ const LandingPage = () => {
       </div>
 
       {/* Footer CTA */}
+
       <div
         className="px-4 sm:px-8 py-16 sm:py-20 text-center relative z-10"
         style={{ borderTop: "1px solid rgba(168,85,247,0.1)" }}
@@ -386,7 +392,7 @@ const LandingPage = () => {
           className="text-xs sm:text-sm mb-6 sm:mb-8"
           style={{ color: "rgba(255,255,255,0.4)" }}
         >
-          Join NetMirror today — it's free!
+          Join NetMirror today - it's free!
         </p>
         <button
           onClick={() => navigate("/login")}
@@ -398,6 +404,7 @@ const LandingPage = () => {
       </div>
 
       {/* Footer */}
+      
       <div
         className="px-4 sm:px-8 py-6 sm:py-8 relative z-10"
         style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}

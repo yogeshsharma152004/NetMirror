@@ -1,4 +1,3 @@
-// hooks/useMovieDetails.js
 import { useEffect, useState } from "react";
 import { API_OPTIONS } from "../utils/constansts";
 
@@ -14,7 +13,7 @@ const useMovieDetails = (movieId) => {
     const fetchAll = async () => {
       setLoading(true);
       try {
-        // Movie details + cast + similar — parallel fetch ✅
+       
         const [detailRes, creditsRes, similarRes] = await Promise.all([
           fetch(
             `https://api.themoviedb.org/3/movie/${movieId}?language=en-IN`,

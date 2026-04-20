@@ -63,7 +63,8 @@ const Login = () => {
       className="relative w-full min-h-screen flex items-center justify-center px-4"
       style={{ background: "#07050f" }}
     >
-      {/* Orbs */}
+      
+
       <div
         className="orb"
         style={{
@@ -88,6 +89,7 @@ const Login = () => {
       />
 
       {/* Mini Header */}
+
       <div
         className="fixed top-0 w-full z-50 px-4 sm:px-8 py-3 sm:py-4 flex items-center justify-between"
         style={{
@@ -122,6 +124,7 @@ const Login = () => {
       </div>
 
       {/* Form */}
+      
       <div
         className="relative z-10 w-full max-w-sm sm:max-w-md p-6 sm:p-10 rounded-2xl text-white mt-16"
         style={{

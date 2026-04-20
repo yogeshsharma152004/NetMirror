@@ -35,6 +35,7 @@ const MovieList = ({ title, movies }) => {
               movieId={movie.id}
               movieTitle={movie.title}
               rating={movie.vote_average}
+              releaseDate={movie.release_date}
             />
           ))}
         </div>

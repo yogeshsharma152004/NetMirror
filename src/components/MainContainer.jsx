@@ -11,20 +11,23 @@ const MainContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
   const trailerVideo = useSelector((store) => store.movies?.trailerVideo);
   const [mainMovie, setMainMovie] = useState(null);
-  const [triedMovies, setTriedMovies] = useState([]); // ✅ Track tried movies
+  const [triedMovies, setTriedMovies] = useState([]); 
 
-  // ✅ Movie choose karo — trailer check karo
+  //  choose movie and check trailer
+
   const findMovieWithTrailer = async (moviesList, alreadyTried = []) => {
     if (!moviesList) return;
 
-    // Untried movies mein se random lo
+    // random movies from untried movies
+    
     const untried = moviesList.filter((m) => !alreadyTried.includes(m.id));
-    if (untried.length === 0) return; // Sab try ho gaye
+    if (untried.length === 0) return; 
 
     const randomIndex = Math.floor(Math.random() * untried.length);
     const movie = untried[randomIndex];
 
-    // Trailer check karo
+    // Trailer check 
+
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/${movie.id}/videos?language=en-US`,
       API_OPTIONS,
@@ -48,11 +51,12 @@ const MainContainer = () => {
           : null;
 
     if (trailer) {
-      // ✅ Trailer mila — yeh movie dikhao
+
+      // Trailer mila yeh movie dikhao
       setMainMovie(movie);
       dispatch(addTrailerVideo(trailer));
     } else {
-      // ❌ Trailer nahi mila — dusri movie try karo
+      //  Trailer nahi mila  dusri movie try karo
       findMovieWithTrailer(moviesList, [...alreadyTried, movie.id]);
     }
   };

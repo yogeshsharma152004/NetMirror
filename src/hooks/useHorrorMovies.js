@@ -1,4 +1,3 @@
-// hooks/useHorrorMovies.js
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constansts";
 import { addHorrorMovies } from "../redux/slices/moviesSlice";

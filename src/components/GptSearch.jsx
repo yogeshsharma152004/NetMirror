@@ -1,13 +1,21 @@
 import GptSearchBar from "./GptSearchBar";
 import GptMovieSuggestion from "./GptMovieSuggestion";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { clearGptMovieResult } from "../redux/slices/gptSlice";
 
 const GptSearch = () => {
+   const dispatch = useDispatch();
+
+   useEffect(() => {
+     dispatch(clearGptMovieResult())
+   }, []);
   return (
     <div
       className="relative w-full min-h-screen text-white pt-4"
       style={{ background: "#07050f" }}
     >
-      {/* Orbs */}
+      
       <div
         className="orb"
         style={{

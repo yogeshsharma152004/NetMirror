@@ -1,4 +1,3 @@
-
 import {
   doc,
   setDoc,
@@ -6,7 +5,7 @@ import {
   collection,
   getDocs,
 } from "firebase/firestore";
-import { db, auth } from "../utils/firebase"; // ✅ auth add kiya
+import { db, auth } from "../utils/firebase"; 
 import { useDispatch, useSelector } from "react-redux";
 import {
   addToWatchlist,
@@ -19,7 +18,7 @@ const useWatchlist = () => {
   const watchlist = useSelector((store) => store.watchlist.movies);
 
   const loadWatchlist = async () => {
-    const user = auth.currentUser; // ✅ Redux ki jagah Firebase se directly lo
+    const user = auth.currentUser; 
     if (!user) return;
     const snapshot = await getDocs(
       collection(db, "users", user.uid, "watchlist"),
@@ -29,7 +28,7 @@ const useWatchlist = () => {
   };
 
   const addMovie = async (movie) => {
-    const user = auth.currentUser; // ✅
+    const user = auth.currentUser; 
     if (!user) return;
     const movieData = {
       id: movie.id,
@@ -46,7 +45,7 @@ const useWatchlist = () => {
   };
 
   const removeMovie = async (movieId) => {
-    const user = auth.currentUser; // ✅
+    const user = auth.currentUser; 
     if (!user) return;
     await deleteDoc(doc(db, "users", user.uid, "watchlist", String(movieId)));
     dispatch(removeFromWatchlist(movieId));

@@ -13,14 +13,14 @@ const Watchlist = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // ✅ Firebase auth ready hone ka wait karo
+   
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setLoading(true);
         await loadWatchlist();
         setLoading(false);
       } else {
-        // User nahi hai toh login pe bhejo
+        
         navigate("/login");
       }
     });
@@ -49,7 +49,6 @@ const Watchlist = () => {
       className="min-h-screen text-white relative px-4 md:px-10 pt-8 md:pt-10"
       style={{ background: "#07050f" }}
     >
-      {/* Orbs */}
       <div
         className="orb"
         style={{
@@ -72,8 +71,6 @@ const Watchlist = () => {
           right: "-80px",
         }}
       />
-
-      {/* Back */}
 
       <div className="flex items-center gap-5 mb-8">
         <button
@@ -99,7 +96,6 @@ const Watchlist = () => {
         </h1>
       </div>
 
-      {/* Title */}
       <div className="flex items-center gap-4 mb-10 relative">
         <div
           className="absolute -top-2 left-0 right-0 h-px"
@@ -109,7 +105,7 @@ const Watchlist = () => {
           }}
         />
         <div
-          className="px-3 py-1 rounded-lg text-xs font-black tracking-widest"
+          className="px-3 py-2 rounded-lg text-xs font-black tracking-widest"
           style={{
             background: "rgba(251,191,36,0.1)",
             border: "1px solid rgba(251,191,36,0.3)",
@@ -120,7 +116,7 @@ const Watchlist = () => {
         </div>
 
         <span
-          className="text-sm font-semibold px-3 py-1 rounded-lg"
+          className="text-xs font-semibold px-3 py-2 rounded-lg"
           style={{
             background: "rgba(168,85,247,0.1)",
             border: "1px solid rgba(168,85,247,0.2)",
@@ -132,6 +128,7 @@ const Watchlist = () => {
       </div>
 
       {/* Empty State */}
+
       {watchlist.length === 0 ? (
         <div className="flex flex-col items-center justify-center mt-32 gap-6">
           <div
@@ -161,9 +158,9 @@ const Watchlist = () => {
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 pb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-5  pb-16 ">
           {watchlist.map((movie) => (
-            <div key={movie.id} className="relative group">
+            <div key={movie.id} className="relative group mb-6">
               <div
                 onClick={() => navigate("/movie/" + movie.id)}
                 className="cursor-pointer"
@@ -207,6 +204,18 @@ const Watchlist = () => {
                       ★ {movie.vote_average.toFixed(1)}
                     </div>
                   )}
+                  {movie.release_date && (
+                    <div
+                      className="absolute top-2 left-2 px-1.5 py-0.5 rounded text-xs font-bold"
+                      style={{
+                        background: "rgba(7,5,15,0.8)",
+                        color: "rgba(255,255,255,0.5)",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {movie.release_date.split("-")[0]}
+                    </div>
+                  )}
                   {/* Remove button */}
                   <div
                     onClick={(e) => {
@@ -224,8 +233,8 @@ const Watchlist = () => {
                 </div>
                 {movie.title && (
                   <p
-                    className="mt-2 text-xs font-semibold truncate"
-                    style={{ color: "rgba(255,255,255,0.7)" }}
+                    className="mt-1.5 sm:mt-2 text-xs sm:text-sm font-semibold truncate text-center text-zinc-300 hover:text-purple-400 transition duration-300"
+          
                   >
                     {movie.title}
                   </p>

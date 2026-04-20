@@ -20,7 +20,9 @@ const Browse = () => {
 
   return (
     <div className="min-h-screen relative" style={{ background: "#07050f" }}>
+
       {/* Background Orbs */}
+      
       <div
         className="orb"
         style={{

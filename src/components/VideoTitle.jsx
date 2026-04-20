@@ -9,7 +9,7 @@ const VideoTitle = ({ title, overview }) => {
           "linear-gradient(to top,rgba(7,5,15,0.85) 0%, rgba(7,5,15,0.4) 50%, transparent 100%)",
       }}
     >
-      {/* Badge */}
+     
       <div
         className="inline-flex items-center gap-2 mb-3 sm:mb-4 w-fit px-2.5 sm:px-3 py-1 rounded-lg text-xs font-black tracking-widest"
         style={{
@@ -21,7 +21,7 @@ const VideoTitle = ({ title, overview }) => {
         ▶ NOW PLAYING
       </div>
 
-      {/* Title */}
+    
       <h1
         className="text-2xl sm:text-4xl lg:text-6xl font-black mb-3 sm:mb-4 leading-tight tracking-tight max-w-xs sm:max-w-lg lg:max-w-2xl"
         style={{
@@ -34,7 +34,7 @@ const VideoTitle = ({ title, overview }) => {
         {title}
       </h1>
 
-      {/* Overview — hidden on mobile, visible sm+ */}
+     
       <p
         className="hidden sm:block w-full sm:w-8/12 lg:w-5/12 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6"
         style={{ color: "rgba(255,255,255,0.5)" }}

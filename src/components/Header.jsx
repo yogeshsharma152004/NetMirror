@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../redux/slices/userSlice";
 import { toggleGptSearchView } from "../redux/slices/gptSlice";
-import { SUPPORTED_LANGUAGES } from "../utils/constansts";
-import { changeLanguage } from "../redux/slices/configSlice";
+
+
 import { IoIosAdd } from "react-icons/io";
 
 const Header = () => {
@@ -57,7 +57,7 @@ const Header = () => {
         borderBottom: "1px solid rgba(168,85,247,0.15)",
       }}
     >
-      {/* Logo */}
+    
       <div
         className="flex items-center gap-2 sm:gap-3 cursor-pointer"
         onClick={() => navigate("/browse")}
@@ -86,27 +86,7 @@ const Header = () => {
         <>
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-3">
-            {showGptSearch && (
-              <select
-                onChange={(e) => dispatch(changeLanguage(e.target.value))}
-                className="text-sm font-semibold px-4 py-2 rounded-xl outline-none cursor-pointer"
-                style={{
-                  background: "rgba(168,85,247,0.1)",
-                  border: "1px solid rgba(168,85,247,0.25)",
-                  color: "#c084fc",
-                }}
-              >
-                {SUPPORTED_LANGUAGES.map((lang) => (
-                  <option
-                    key={lang.identifier}
-                    value={lang.identifier}
-                    style={{ background: "#07050f", color: "#fff" }}
-                  >
-                    {lang.name}
-                  </option>
-                ))}
-              </select>
-            )}
+            
 
             <button
               onClick={() => dispatch(toggleGptSearchView())}
@@ -220,7 +200,7 @@ const Header = () => {
               {user?.displayName?.[0]?.toUpperCase() || "U"}
             </div>
 
-            {/* Hamburger */}
+         
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="w-8 h-8 flex flex-col items-center justify-center gap-1.5 cursor-pointer"
@@ -257,7 +237,7 @@ const Header = () => {
                   }}
                 />
                 <div className="p-3 flex flex-col gap-2">
-                  {showGptSearch && (
+                  {/* {showGptSearch && (
                     <select
                       onChange={(e) => dispatch(changeLanguage(e.target.value))}
                       className="w-full text-sm font-semibold px-3 py-2 rounded-xl outline-none cursor-pointer"
@@ -277,7 +257,7 @@ const Header = () => {
                         </option>
                       ))}
                     </select>
-                  )}
+                  )} */}
 
                   <button
                     onClick={() => {
@@ -355,7 +335,7 @@ const Header = () => {
               </div>
             )}
 
-            {/* Avatar dropdown (mobile) */}
+            
             {showDropdown && (
               <div
                 className="avatar-dropdown absolute right-4 top-14 w-60 rounded-2xl overflow-hidden z-50"

@@ -1,5 +1,3 @@
-
-
 import { API_OPTIONS } from "../utils/constansts";
 import { addTrailerVideo } from "../redux/slices/moviesSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +9,7 @@ const useMovieTrailer = (movieId) => {
 
   useEffect(() => {
     if (!movieId) return;
-    if (trailerVideo) return; // ✅ Already hai toh skip
+    if (trailerVideo) return;
 
     const getMovieVideos = async () => {
       const data = await fetch(
@@ -22,7 +20,7 @@ const useMovieTrailer = (movieId) => {
       );
       const json = await data.json();
 
-      // ✅ Priority: Trailer > Teaser > Any YouTube video
+     
       const trailers = json.results.filter(
         (v) => v.type === "Trailer" && v.site === "YouTube",
       );

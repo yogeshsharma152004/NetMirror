@@ -56,7 +56,7 @@ const MovieDetail = () => {
       className="min-h-screen text-white relative"
       style={{ background: "#07050f" }}
     >
-      {/* Orbs */}
+     
       <div
         className="orb"
         style={{
@@ -80,7 +80,7 @@ const MovieDetail = () => {
         }}
       />
 
-      {/* Hero Banner */}
+      
       <div className="relative w-full h-[40vh] sm:h-[55vh]">
         <img
           className="w-full h-full object-cover"
@@ -117,9 +117,12 @@ const MovieDetail = () => {
       </div>
 
       {/* Content */}
+
       <div className="relative z-10 px-4 sm:px-10 -mt-28 sm:-mt-40">
         <div className="flex flex-col sm:flex-row gap-5 sm:gap-8 items-start sm:items-end">
+
           {/* Poster */}
+          
           <div className="hidden sm:block flex-shrink-0">
             <img
               className="w-32 sm:w-44 rounded-2xl object-cover"
@@ -133,6 +136,7 @@ const MovieDetail = () => {
           </div>
 
           {/* Info */}
+
           <div className="flex-1 pb-4 w-full">
             <div
               className="inline-flex items-center gap-2 mb-2 sm:mb-3 px-2.5 sm:px-3 py-1 rounded-lg text-xs font-black tracking-widest"
@@ -243,6 +247,7 @@ const MovieDetail = () => {
         />
 
         {/* Cast */}
+
         {cast.length > 0 && (
           <div className="mb-8 sm:mb-10">
             <div className="flex items-center gap-3 mb-4 sm:mb-5">
@@ -286,6 +291,7 @@ const MovieDetail = () => {
         )}
 
         {/* Similar Movies */}
+
         {similar.length > 0 && (
           <div className="mb-12 sm:mb-16">
             <div className="flex items-center gap-3 mb-4 sm:mb-5">

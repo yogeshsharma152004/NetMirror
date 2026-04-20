@@ -8,7 +8,8 @@ const VideoBackground = ({ movieId, backdropPath }) => {
 
   useMovieTrailer(movieId);
 
-  // ✅ Resize pe update karo
+ 
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -19,7 +20,8 @@ const VideoBackground = ({ movieId, backdropPath }) => {
 
   if (!trailerVideo && !backdropPath) return null;
 
-  // ✅ Mobile pe hamesha image
+  // phone => image
+
   if (isMobile) {
     return (
       <div className="w-full h-full absolute inset-0 ">
@@ -28,7 +30,7 @@ const VideoBackground = ({ movieId, backdropPath }) => {
           src={`https://image.tmdb.org/t/p/original${backdropPath}`}
           alt="backdrop"
         />
-        {/* Overlay */}
+        
         <div
           className="absolute inset-0"
           style={{
@@ -40,7 +42,8 @@ const VideoBackground = ({ movieId, backdropPath }) => {
     );
   }
 
-  // ✅ Desktop pe video
+  //  Desktop => Trailer video
+
   if (!trailerVideo) return null;
 
   return (

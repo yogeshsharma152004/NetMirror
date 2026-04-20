@@ -2,7 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { IMG_CDN_URL } from "../utils/constansts";
 
-export const MovieCard = ({ posterPath, movieId, movieTitle, rating }) => {
+export const MovieCard = ({
+  posterPath,
+  movieId,
+  movieTitle,
+  rating,
+  releaseDate,
+}) => {
   const navigate = useNavigate();
   if (!posterPath) return null;
 
@@ -35,6 +41,19 @@ export const MovieCard = ({ posterPath, movieId, movieTitle, rating }) => {
             }}
           >
             ★ {rating.toFixed(1)}
+          </div>
+        )}
+
+        {releaseDate && (
+          <div
+            className="absolute top-2 right-2 px-1.5 py-0.5 rounded text-xs font-bold"
+            style={{
+              background: "rgba(7,5,15,0.8)",
+              color: "rgba(255,255,255,0.5)",
+              fontSize: "10px",
+            }}
+          >
+            {releaseDate.split("-")[0]}
           </div>
         )}
       </div>
