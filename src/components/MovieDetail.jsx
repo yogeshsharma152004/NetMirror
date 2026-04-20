@@ -123,7 +123,7 @@ const MovieDetail = () => {
 
           {/* Poster */}
           
-          <div className="hidden sm:block flex-shrink-0">
+          <div className="hidden sm:block shrink-0">
             <img
               className="w-32 sm:w-44 rounded-2xl object-cover"
               style={{
@@ -266,7 +266,7 @@ const MovieDetail = () => {
               {cast.map((person) => (
                 <div
                   key={person.id}
-                  className="flex-shrink-0 text-center w-14 sm:w-20"
+                  className="shrink-0 text-center w-14 sm:w-20"
                 >
                   <img
                     className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover mx-auto mb-1.5 sm:mb-2"

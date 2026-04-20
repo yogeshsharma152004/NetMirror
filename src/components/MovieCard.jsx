@@ -15,7 +15,7 @@ export const MovieCard = ({
   return (
     <div
       onClick={() => navigate("/movie/" + movieId)}
-      className="flex-shrink-0 cursor-pointer"
+      className="shrink-0 cursor-pointer"
       style={{ width: "clamp(130px, 18vw, 200px)" }}
     >
       <div

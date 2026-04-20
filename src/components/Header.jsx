@@ -149,7 +149,7 @@ const Header = () => {
                     style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
                   >
                     <div
-                      className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                      className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
                       style={{
                         background: "linear-gradient(135deg,#7c3aed,#fbbf24)",
                       }}
@@ -297,7 +297,7 @@ const Header = () => {
                   >
                     <div className="px-2 pb-2 flex items-center gap-3">
                       <div
-                        className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                        className="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
                         style={{
                           background: "linear-gradient(135deg,#7c3aed,#fbbf24)",
                         }}
@@ -357,7 +357,7 @@ const Header = () => {
                   style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
                 >
                   <div
-                    className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0"
+                    className="w-11 h-11 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
                     style={{
                       background: "linear-gradient(135deg,#7c3aed,#fbbf24)",
                     }}

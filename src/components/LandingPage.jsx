@@ -249,7 +249,7 @@ const LandingPage = () => {
             {[...Array(7)].map((_, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 rounded-xl"
+                className="shrink-0 rounded-xl"
                 style={{
                   width: "clamp(100px, 15vw, 140px)",
                   height: "clamp(150px, 22vw, 200px)",
@@ -404,7 +404,7 @@ const LandingPage = () => {
       </div>
 
       {/* Footer */}
-      
+
       <div
         className="px-4 sm:px-8 py-6 sm:py-8 relative z-10"
         style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}

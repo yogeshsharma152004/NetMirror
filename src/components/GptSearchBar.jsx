@@ -259,7 +259,7 @@ const handleSearch = useCallback(async () => {
           <button
             onClick={handleSearch}
             disabled={loading}
-            className="flex-shrink-0 px-4 md:px-6 py-2 rounded-xl text-xs font-black tracking-wider text-white cursor-pointer disabled:opacity-50 whitespace-nowrap transition-opacity duration-200"
+            className="shrink-0 px-4 md:px-6 py-2 rounded-xl text-xs font-black tracking-wider text-white cursor-pointer disabled:opacity-50 whitespace-nowrap transition-opacity duration-200"
             style={{ background: "linear-gradient(135deg,#7c3aed,#fbbf24)" }}
           >
             {loading ? "Searching..." : "Search"}
