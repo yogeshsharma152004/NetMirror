@@ -74,7 +74,7 @@ const MainContainer = () => {
     <div className="w-full h-[60vh] md:h-screen relative ">
       <VideoBackground movieId={id} backdropPath={backdrop_path} />
       {trailerVideo && (
-        <VideoTitle title={original_title} overview={overview} />
+        <VideoTitle title={original_title} overview={overview} movie={mainMovie}/>
       )}
     </div>
   );
